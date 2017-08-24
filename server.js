@@ -10,6 +10,10 @@ app.get('/', function (req, res) {
 });
 
 app.get('/file_one', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'file_one.html'));
+});
+
+app.get('/file_two', function (req, res) {
   res.send('this is my second file');
 });
 
