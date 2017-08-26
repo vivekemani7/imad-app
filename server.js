@@ -5,7 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var file_one = {
+var files = {
+'file_one' : {
     title:'file_one|vivek',
     heading:'file_one',
     date:'aug 26 2017',
@@ -19,7 +20,22 @@ var file_one = {
                 just work buddy i beg you
             </p>`
             
+},
+'file_two' : {
+    title:'file_two|vivek',
+    heading:'file_one',
+    date:'aug 25 2017',
+    content:`
+              <p>
+                this is second time to edit this file.this is frist time to edit this file.
+                this is frist time to edit this file.this is frist time to edit this file.
+                this is frist time to edit this file.this is frist time to edit this file.
+            </p>
+            <p>
+                just work buddy i beg you twice
+            </p>`
 }
+};
 function createtemplate(data){
     var title = data.title; 
     var date = data.date;
@@ -57,16 +73,14 @@ var htmltemplate=`
 `;
 return htmltemplate;
 }
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/file_one', function (req, res) {
-  res.send(createtemplate(file_one)) ;
-});
-
-app.get('/file_two', function (req, res) {
-   res.sendFile(path.join(__dirname, 'ui', 'file_two.html'));
+app.get('/:filename', function (req, res) {
+    var filename = req.params.filename;
+  res.send(createtemplate(files[filename])) ;
 });
 
 app.get('/ui/style.css', function (req, res) {
