@@ -5,12 +5,64 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var file_one = {
+    title:'file_one|vivek',
+    heading:'file_one',
+    date:'aug 26 2017',
+    content:`
+              <p>
+                this is frist time to edit this file.this is frist time to edit this file.
+                this is frist time to edit this file.this is frist time to edit this file.
+                this is frist time to edit this file.this is frist time to edit this file.
+            </p>
+            <p>
+                just work buddy i beg you
+            </p>`
+            
+}
+function createtemplate(data){
+    var title = data.title; 
+    var date = data.date;
+    var heading = data.heading;
+    var content = data.content;
+
+var htmltemplate=`
+    <html>
+    <head>
+        <title>
+            ${title}
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+         <link href="/ui/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <div>
+                <a href="/">Home</a>
+            </div>
+        <hr/>
+            <h3>
+                ${heading}
+            </h3>
+            <div>
+              ${date}
+            </div>
+            <div>
+            ${content}
+            </div>
+        </div>
+    </body>
+</html>
+
+`;
+return htmltemplate;
+}
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/file_one', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'file_one.html'));
+  res.send(createtemplate(file_one)) ;
 });
 
 app.get('/file_two', function (req, res) {
