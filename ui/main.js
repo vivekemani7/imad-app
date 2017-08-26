@@ -1,8 +1,8 @@
 console.log('Loaded!');
-var element = document.getElementByid('main-text');
+var element = document.getElementById('main-text');
 element.innerHTML = 'THIS IS VIVEK';
 // move the element
-var img =  document.getElementByid('madi');
+var img =  document.getElementById('madi');
 var marginLeft=0;
 function moveRight(){
     marginLeft = marginLeft + 10;
