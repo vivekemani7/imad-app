@@ -1,6 +1,6 @@
 console.log('Loaded!');
 var element = document.getElementById('main-text');
-element.innerHTML = 'THIS IS VIVEK';
+element.innerHTML = 'Vinod Vishal Vivek';
 // move image the element
 var img =  document.getElementById('madi');
 
