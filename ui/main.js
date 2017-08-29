@@ -1,9 +1,25 @@
 var button = document.getElementById('counter');
-var counter = 0;
+
+
 button.onclick = function(){
-  // rendered the variable in the correct span
-  counter = counter+1;
-  var span = document.getElementById('count');
-  span.innerHTML = counter.toString();
+    //creating a request object 
+    var request = new XMLhTTPRequest();
+    
+    // capture the response and store it in a variable
+    request.onreadystatechange = function(){
+        if(request.readystate === XMLHttpRequest.DONE){
+            
+        
+            if(request.readystatus === 200){
+                var counter = request.response.Text;
+                var span = document.getElementById('count');
+                span.innerHTML = counter.toString();
+            }
+        }
+            
+    };
+    request.open('GET','http://http://vivekemani7.imad.hasura-app.io/counter',true);
+    request.send(null);
+ 
   
 };
