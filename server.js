@@ -15,7 +15,7 @@ app.use(morgan('combined'));
 
 var files = {
 'file_one' : {
-    title:'file_one|vivek',
+    title:'file_one',
     heading:'file_one',
     date:'aug 26 2017',
     content:`
@@ -30,7 +30,7 @@ var files = {
             
 },
 'file_two' : {
-    title:'file_two|vivek',
+    title:'file_two',
     heading:'file_one',
     date:'aug 25 2017',
     content:`
