@@ -7,7 +7,7 @@ var config = {
     user: 'vivekemani7',
     database: 'vivekemani7',
     host: 'db.imad.hasura-app.io',
-    port: 5432,
+    port: '5432',
     password: process.env.DB_PASSWORD
 };
 var app = express();
@@ -96,7 +96,7 @@ app.get('/test_db', function (req, res){
            res.status(500).send(err.toString());
        } 
        else{
-           res.send(JSON.stringfy(result));
+           res.send(JSON.stringfy(result.rows));
        }
     });
 });
