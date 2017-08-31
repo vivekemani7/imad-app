@@ -109,7 +109,7 @@ app.get('/counter', function (req, res) {
 
 app.get('/files/:filename', function (req, res) {
     
-    pool.query("SELECT * FROM file WHERE title = '" + req.params.filename + "'", function(err,result){
+    pool.query("SELECT * FROM file WHERE title = " + req.params.filename, function(err,result){
         if(err){
            res.status(500).send(err.toString());
         }
