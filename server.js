@@ -38,9 +38,6 @@ var files = {
                 this is second time to edit this file.this is frist time to edit this file.
                 this is frist time to edit this file.this is frist time to edit this file.
                 this is frist time to edit this file.this is frist time to edit this file.
-            </p>
-            <p>
-                just work buddy i beg you twice
             </p>`
 }
 };
