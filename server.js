@@ -86,11 +86,11 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-var pool = new Pool(config) ;
+var pool = new Pool('config') ;
 app.get('/test_db', function (req, res){
     //make a select request
     //return a response with the results
-    pool.query('SELECT * FROM "test" LIMIT 50',function(err,result)
+    pool.query('SELECT * FROM test',function(err,result)
     {
        if(err){
            res.status(500).send(err.toString());
