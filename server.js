@@ -113,7 +113,7 @@ app.get('/files/:filename', function (req, res) {
                 res.status(404).send('file not found');
             }else{
                 var filename = result.rows[0];
-                res.send(createtemplate(files(filename))) ;
+                res.send(createtemplate(filename)) ;
             }
         }
     });
