@@ -1,7 +1,15 @@
 var express = require('express');//importing 3 software packages
 var morgan = require('morgan');
 var path = require('path');
+var pool = require('pg').pool;
 
+var config = {
+    user: 'vivekemani7',
+    database: 'vivekemani7',
+    host: 'db.imad.hasura-app.io',
+    port: '5432',
+    password: process.env.DB_PASSWORD
+};
 var app = express();
 app.use(morgan('combined'));
 
@@ -76,6 +84,21 @@ return htmltemplate;
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
+
+var pool = new pool(config);
+app.get('/test_db', function (req, res){
+    //make a select request
+    //return a response with the results
+    pool.query('SELECT * FROM test',function(err,result)
+    {
+       if(err){
+           res.status(500).send(err.toString());
+       } 
+       else{
+           res.send(JSON.stringfy(result));
+       }
+    });
 });
 
 var counter = 0;
