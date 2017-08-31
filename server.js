@@ -51,7 +51,7 @@ var htmltemplate=`
     <html>
     <head>
         <title>
-            ${title }
+            ${title}
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
          <link href="/ui/style.css" rel="stylesheet" />
@@ -104,7 +104,7 @@ app.get('/counter', function (req, res) {
 
 app.get('/files/:filename', function (req, res) {
     
-    pool.query("SELECT * FROM file WHERE title = '" + req.params.filename + "'", function(err,result){
+    pool.query("SELECT * FROM file WHERE title = " + req.params.filename , function(err,result){
         if(err){
            res.status(500).send(err.toString());
         }
